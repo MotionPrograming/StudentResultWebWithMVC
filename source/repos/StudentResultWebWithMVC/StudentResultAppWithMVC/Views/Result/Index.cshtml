@@ -1,0 +1,47 @@
+﻿@model IEnumerable<StudentResultAppWithMVC.Models.Entity.Result>
+
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h2>Result List</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create Result</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Physics</th>
+            <th>Chemistry</th>
+            <th>Math</th>
+            <th width="180">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.student?.StudentName</td>
+                <td>@item.PhysicsMark</td>
+                <td>@item.ChemistryMark</td>
+                <td>@item.MathMark</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@item.ResultId"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@item.ResultId"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+﻿@model StudentResultAppWithMVC.Models.RegisterViewModel
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label asp-for="Email">Email</label><br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Password">Password</label><br />
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="ConfirmPassword">Confirm Password</label><br />
+        <input asp-for="ConfirmPassword" type="password" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <br />
+    <input type="submit" value="Register" class="btn btn-primary" />
+</form>
+
+<br />
+<a asp-action="Login">Already have an account? Login</a>

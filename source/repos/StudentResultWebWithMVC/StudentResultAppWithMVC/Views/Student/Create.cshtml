@@ -1,0 +1,49 @@
+﻿@model StudentResultAppWithMVC.Models.StudentViewModel
+
+@{
+    ViewData["Title"] = "Create Student";
+}
+
+<h2>Create Student</h2>
+
+<form asp-action="Create" method="post">  
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="mb-3">
+        <label asp-for="StudentName" class="form-label">Name</label>
+        <input asp-for="StudentName" class="form-control" />
+        <span asp-validation-for="StudentName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StudentAge" class="form-label">Age</label>
+        <input asp-for="StudentAge" class="form-control" />
+        <span asp-validation-for="StudentAge" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DepartmentId" class="form-label">Choose Department</label>
+
+        <select asp-for="DepartmentId"
+                asp-items="Model.Departments"
+                class="form-select">
+            <option value="">-- Select Department --</option>
+        </select>
+
+        <span asp-validation-for="DepartmentId"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Save
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</form>
+

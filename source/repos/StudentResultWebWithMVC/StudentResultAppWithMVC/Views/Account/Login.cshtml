@@ -1,0 +1,28 @@
+﻿@model StudentResultAppWithMVC.Models.LoginViewModel
+
+<h2>Login</h2>
+
+<form asp-action="Login" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div>
+        <label asp-for="Email">Email</label><br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Password">Password</label><br />
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div>
+        <input asp-for="RememberMe" type="checkbox" />
+        <label asp-for="RememberMe">Remember Me</label>
+    </div>
+
+    <br />
+    <input type="submit" value="Login" class="btn btn-primary" />
+</form>
+
+<br />
+<a asp-action="Register">Don't have an account? Register</a>

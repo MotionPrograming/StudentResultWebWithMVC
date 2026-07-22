@@ -1,0 +1,53 @@
+@model StudentResultAppWithMVC.Models.ResultViewModel
+
+@{
+    ViewData["Title"] = "Create Result";
+}
+
+<h2>Create Result</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="StudentId" class="form-label">Select Student</label>
+        <select asp-for="StudentId" asp-items="Model.Students" class="form-control">
+            <option value="">-- Choose a Student --</option>
+        </select>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PhysicsMark" class="form-label">Physics Mark</label>
+        <input asp-for="PhysicsMark" class="form-control" type="number" step="0.01" min="0" max="100" />
+        <span asp-validation-for="PhysicsMark" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ChemistryMark" class="form-label">Chemistry Mark</label>
+        <input asp-for="ChemistryMark" class="form-control" type="number" step="0.01" min="0" max="100" />
+        <span asp-validation-for="ChemistryMark" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MathMark" class="form-label">Math Mark</label>
+        <input asp-for="MathMark" class="form-control" type="number" step="0.01" min="0" max="100" />
+        <span asp-validation-for="MathMark" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Create Result
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Back to Results
+    </a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

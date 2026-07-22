@@ -1,0 +1,51 @@
+﻿@model StudentResultAppWithMVC.Models.ResultViewModel
+
+@{
+    ViewData["Title"] = "Edit Result";
+}
+
+<h2>Edit Result</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input asp-for="ResultId" type="hidden" />
+    <input asp-for="StudentId" type="hidden" />
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="PhysicsMark" class="form-label"></label>
+        <input asp-for="PhysicsMark" class="form-control" />
+        <span asp-validation-for="PhysicsMark" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ChemistryMark" class="form-label"></label>
+        <input asp-for="ChemistryMark" class="form-control" />
+        <span asp-validation-for="ChemistryMark" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MathMark" class="form-label"></label>
+        <input asp-for="MathMark" class="form-control" />
+        <span asp-validation-for="MathMark" class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary"
+            type="submit">
+        Update
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

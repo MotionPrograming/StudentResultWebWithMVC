@@ -1,0 +1,68 @@
+﻿@model StudentResultAppWithMVC.Models.StudentViewModel
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h2>Edit Student</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input asp-for="StudentId" type="hidden" />
+
+    <div asp-validation-summary="ModelOnly"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="StudentName"
+               class="form-label"></label>
+
+        <input asp-for="StudentName"
+               class="form-control" />
+
+        <span asp-validation-for="StudentName"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StudentAge"
+               class="form-label"></label>
+
+        <input asp-for="StudentAge"
+               class="form-control" />
+
+        <span asp-validation-for="StudentAge"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DepartmentId"
+               class="form-label"></label>
+
+        <select asp-for="DepartmentId"
+                asp-items="Model.Departments"
+                class="form-select">
+            <option value="">-- Select Department --</option>
+        </select>
+
+        <span asp-validation-for="DepartmentId"
+              class="text-danger"></span>
+    </div>
+
+    <button class="btn btn-primary"
+            type="submit">
+        Update
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
